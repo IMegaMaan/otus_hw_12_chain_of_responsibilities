@@ -1,0 +1,82 @@
+[tool.poetry]
+name = "otus-hw-template"
+version = "1.0.0"
+description = ""
+authors = ["dmitriy lyakhovitskiy <dmitry.lyakhovitskiy@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "8.1.1"
+pytest-mock = "3.14.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "0.4.1"
+pre-commit = "3.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "8.1"
+testpaths = ["src/tests", "tests"]
+pythonpath = "src"
+
+[tool.coverage.run]
+omit = [
+    "tests/*",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+src = ["."]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [# https://docs.astral.sh/ruff/rules
+    "ANN101", "ANN102", # Typing for `self` and `cls` is never required.
+    "ANN401", # Using typing with `Any` is permissible in certain cases.
+    "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107", # Documentation in our projects is always optional.
+    "D203", "D213", # Exclude conflicting rules. Use rules D211 and D212.
+    "D407", "D408", "D409", # Do not use the numpy-style docstrings with dashed underline.
+    "F403", # It is acceptable to import everything using `*` in certain cases.
+    "G004", # It is convenient to use f-strings in logging.
+    "TRY400", # It is acceptable to use `logging.error` in cases where logging the traceback is unnecessary.
+    "TD001", "TD002", "TD003", "TD004", "FIX002", # Disable rules for to-do in Zephyr project.
+]
+fixable = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+"*/__init__.py" = [
+    "F401"
+]
+"src/tests/**/*.py" = [
+    "S101", # Using `assert` in tests is allowed.
+    "PLR0133", # Two constants compared in a comparison, consider replacing
+    "ANN001", #  Missing type annotation for function argument
+    "D400", # First line should end with a period
+    "D415", # First line should end with a period, question mark, or exclamation point
+    "ARG001", # Unused function argument
+    "RUF002",# Docstring contains ambiguous
+    "D205", # 1 blank line required between summary line and description
+]
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 120
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+combine-as-imports = true
+known-first-party = ["src", "tests"]
+
+[tool.ruff.lint.pep8-naming]
+classmethod-decorators = [
+    "classmethod",
+]
