@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "otus-hw-template"
+name = "otus-hw-12-chain-of-responsibilities"
 version = "1.0.0"
 description = ""
 authors = ["dmitriy lyakhovitskiy <dmitry.lyakhovitskiy@gmail.com>"]
@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pytest = "8.1.1"
+pytest = "8.3.2"
 pytest-mock = "3.14.0"
 
 [tool.poetry.group.dev.dependencies]
@@ -74,7 +74,10 @@ multiline-quotes = "double"
 [tool.ruff.lint.isort]
 case-sensitive = true
 combine-as-imports = true
-known-first-party = ["src", "tests"]
+known-first-party = [
+    "src",
+    "tests",
+]
 
 [tool.ruff.lint.pep8-naming]
 classmethod-decorators = [
