@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "otus-hw-template"
+name = "otus-hw-12-chain-of-responsibilities"
 version = "1.0.0"
 description = ""
 authors = ["dmitriy lyakhovitskiy <dmitry.lyakhovitskiy@gmail.com>"]
@@ -7,8 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pytest = "8.1.1"
+pytest = "8.3.2"
 pytest-mock = "3.14.0"
+punq = "0.7.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.4.1"
@@ -52,7 +53,7 @@ fixable = ["ALL"]
 "*/__init__.py" = [
     "F401"
 ]
-"src/tests/**/*.py" = [
+"src/tests/*" = [
     "S101", # Using `assert` in tests is allowed.
     "PLR0133", # Two constants compared in a comparison, consider replacing
     "ANN001", #  Missing type annotation for function argument
@@ -61,6 +62,8 @@ fixable = ["ALL"]
     "ARG001", # Unused function argument
     "RUF002",# Docstring contains ambiguous
     "D205", # 1 blank line required between summary line and description
+    "PLR2004",
+    "SLF001",
 ]
 
 [tool.ruff.lint.pycodestyle]
@@ -74,7 +77,19 @@ multiline-quotes = "double"
 [tool.ruff.lint.isort]
 case-sensitive = true
 combine-as-imports = true
-known-first-party = ["src", "tests"]
+known-first-party = [
+    "src",
+    "tests",
+    "objects",
+    "commands",
+    "ioc",
+    "handlers",
+    "adapters",
+    "constants",
+    "container",
+    "conditions",
+    "main",
+]
 
 [tool.ruff.lint.pep8-naming]
 classmethod-decorators = [

@@ -1,4 +1,4 @@
-name: Standard Otus tests workflow
+name: Otus hw 12 chain of responsibilities
 
 on: [ push ]
 
