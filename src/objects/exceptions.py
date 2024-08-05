@@ -1,4 +1,4 @@
-__all__ = ("WrongInstance",)
+__all__ = ("WrongInstanceError",)
 
 
-class WrongInstance(Exception): ...
+class WrongInstanceError(Exception): ...

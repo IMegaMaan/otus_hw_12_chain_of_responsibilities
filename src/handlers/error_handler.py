@@ -8,6 +8,7 @@ __all__ = ("ExceptionHandler",)
 
 class ExceptionHandler:
     """Example of use:
+
     _STORE: ClassVar[dict] = {
         CommandLogInformation: {
             LogInformationError: ErrorHandlerPutQueueLog,

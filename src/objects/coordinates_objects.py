@@ -2,7 +2,7 @@ from collections import namedtuple
 from functools import lru_cache
 from uuid import uuid4
 
-from objects.exceptions import WrongInstance
+from objects.exceptions import WrongInstanceError
 from objects.uobj import UObject
 
 __all__ = (
@@ -34,12 +34,12 @@ class Area:
 
     def add_object(self, obj: UObject) -> None:
         if not isinstance(obj, UObject):
-            raise WrongInstance("Wring type of instance to add!")
+            raise WrongInstanceError("Wring type of instance to add!")
         self._objects.add(obj)
 
     def remove_object(self, obj: UObject) -> None:
         if not isinstance(obj, UObject):
-            raise WrongInstance("Wring type of instance to remove!")
+            raise WrongInstanceError("Wring type of instance to remove!")
         self._objects.remove(obj)
 
     def all_objects_in(self) -> list[UObject]:
@@ -96,7 +96,6 @@ class BattleField:
         """Возвращает объект перекрестка по `id` или None, если такого перекрестка не существует."""
         return self._areas[coordinate.y][coordinate.x]
 
-    # TODO фактически, это метод адаптера на определение пересечений.
     def get_area_by_coordinates(self, x: int, y: int) -> list[Area]:
         """Получение зоны по входящим x и y координатам сетки. В приграничных условиях, т.е. когда дается координата,
         принадлежащая сразу двум сеткам, например, x=4, y=4, возвращаться буду все координатные сетки.

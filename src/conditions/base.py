@@ -1,7 +1,7 @@
 import logging
 
 from commands import AbstractCommand
-from conditions import AbstractHandleCondition
+from conditions.abstract_ import AbstractHandleCondition
 from handlers import AbstractErrorHandler, ExceptionHandler
 
 __all__ = ("BaseHandleCondition",)

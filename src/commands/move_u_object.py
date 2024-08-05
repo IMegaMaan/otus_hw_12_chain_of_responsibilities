@@ -1,12 +1,13 @@
 from adapters import IMovableForward
 from commands.abstract_ import AbstractCommand
-from objects import Vector
+from objects import Context, Vector
 
 __all__ = ("MoveCommand",)
 
 
 class MoveCommand(AbstractCommand):
-    def __init__(self, movable: IMovableForward) -> None:
+    def __init__(self, context: Context, movable: IMovableForward) -> None:
+        super().__init__(context)
         self.movable: IMovableForward = movable
 
     def execute(self) -> None:

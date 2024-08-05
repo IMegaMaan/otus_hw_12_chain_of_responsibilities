@@ -1,10 +1,14 @@
 __all__ = (
-    "CollisionException",
+    "CollisionError",
     "CantStartThreadError",
+    "ChangedAreaError",
 )
 
 
-class CollisionException(Exception): ...
+class CollisionError(Exception): ...
 
 
 class CantStartThreadError(Exception): ...
+
+
+class ChangedAreaError(Exception): ...

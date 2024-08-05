@@ -1,6 +1,6 @@
 import pytest
 
-from objects import Area, BattleField, UObject, WrongInstance
+from objects import Area, BattleField, UObject, WrongInstanceError
 
 
 def test_battle_field_4_4_is_16_areas(battle_field_4_4: BattleField) -> None:
@@ -40,7 +40,7 @@ def test_add_u_obj_to_area_twice(battle_field_4_4: BattleField, u_object: UObjec
 def test_add_u_obj_cant_add_bad_obj(battle_field_4_4: BattleField) -> None:
     first_area: Area = battle_field_4_4.get_all_areas()[0][0]
     wrong_u_object = 1
-    with pytest.raises(WrongInstance):
+    with pytest.raises(WrongInstanceError):
         first_area.add_object(wrong_u_object)
 
     assert wrong_u_object not in first_area.all_objects_in()

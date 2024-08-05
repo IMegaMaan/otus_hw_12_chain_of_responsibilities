@@ -17,5 +17,5 @@ class InjectCommand(AbstractCommand):
 
 
 if __name__ == "__main__":
-    command = InjectCommand({})
+    command = InjectCommand(Context())
     command.execute()

@@ -1,12 +1,12 @@
+from adapters import IRotateArea
 from commands.abstract_ import AbstractCommand
+from commands.check_location import CheckLocationCommand
+from commands.rotate_intersection import RotateUObjectIntersectionCommand
 
 __all__ = ("CheckCollisionMacroCommand",)
 
 
-# TODO нужно реализовать
 class CheckCollisionMacroCommand(AbstractCommand):
     def execute(self) -> None:
-        # 1. проверка, изменился ли location
-        # 2. изменение принадлежности к Area при необходимости
-        RotateUObjectIntersectionCommand()
-        # 3. Что-то еще?
+        CheckLocationCommand(self._context).execute()
+        RotateUObjectIntersectionCommand(self._context, IRotateArea()).execute()

@@ -1,5 +1,6 @@
 from commands.abstract_ import AbstractCommand
 from commands.check_collision import CheckCollisionCommand
+from commands.check_location import CheckLocationCommand
 from commands.check_object_intersection import CheckUObjectAreaCommand
 from commands.empty import EmptyCommand
 from commands.exceptions import *

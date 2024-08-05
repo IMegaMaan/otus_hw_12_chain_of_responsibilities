@@ -1,7 +1,6 @@
 import pytest
 
-from commands.empty import EmptyCommand
-from commands.injectable import InjectCommand
+from commands import EmptyCommand, InjectCommand, MoveMacroCommand
 from objects import BattleField, UObject
 
 
@@ -37,3 +36,12 @@ def fixture_command() -> type["ExtraCommand"]:
             self._context.update({"result": result})
 
     return ExtraCommand
+
+
+@pytest.fixture()
+def macro_move(mocker) -> type[MoveMacroCommand]:
+    mocker.patch("adapters.movable_forward.IMovableForward.get_position")
+    mocker.patch("adapters.movable_forward.IMovableForward.set_position")
+    mocker.patch("adapters.movable_forward.IMovableForward.get_velocity")
+    mocker.patch("adapters.movable_forward.IMovableForward.set_velocity")
+    return MoveMacroCommand
